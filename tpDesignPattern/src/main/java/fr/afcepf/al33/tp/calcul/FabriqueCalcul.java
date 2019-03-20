@@ -12,7 +12,7 @@ public class FabriqueCalcul {
 	 éventuel singleton sur fabrique
 	 */
 	//si static, appel externe via Calcul calcul = FabriqueCalcul.createCalcul();
-	//si singleton et pas static , appel externe via Calcul calcul = FabriqueCalcul.getInstance().createCalcul();
+	//si singleton et pas static , appel externe via Calcul calcul = (FabriqueCalcul.getInstance()).createCalcul();
 	//le type de retour est une chose abstraite (ex: interface)
 	public static /*ou pas*/ Calcul createCalcul() {
 		Calcul calcul=null;
