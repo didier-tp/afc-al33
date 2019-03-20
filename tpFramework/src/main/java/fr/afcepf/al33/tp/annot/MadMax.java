@@ -6,4 +6,5 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)  //annotation conservée au runtime dans le code compilé
 public @interface MadMax {
 	int value();
+	String comment();
 }

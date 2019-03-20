@@ -6,8 +6,8 @@ public class MyPojo {
 	
 	private String label;//+get/set
 	
-	@MadMax(100)
-	private int value;//+get/set
+	@MadMax(value=100,comment="super")
+	private long valeurQuiVaPeutEtreBien;//+get/set
 	
 
 	public String getLabel() {
@@ -18,13 +18,16 @@ public class MyPojo {
 		this.label = label;
 	}
 
-	public int getValue() {
-		return value;
+	public long getValeurQuiVaPeutEtreBien() {
+		return valeurQuiVaPeutEtreBien;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setValeurQuiVaPeutEtreBien(long valeurQuiVaPeutEtreBien) {
+		this.valeurQuiVaPeutEtreBien = valeurQuiVaPeutEtreBien;
 	}
+
+	
+	
 
 	
 }
