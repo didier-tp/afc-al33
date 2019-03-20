@@ -4,6 +4,7 @@ public class CalculV2 implements Calcul {
 
 	@Override
 	public double racineCarree(double x) {
+		System.out.println("CalculV2.racineCarree");
 		return Math.pow(x,0.5);
 	}
 

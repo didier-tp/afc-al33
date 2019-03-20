@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 public class DeclenchementCalcul {
 	
 	//Calcul calcul = new CalculV1(); 
-	Calcul calcul = new CalculV2(); 
+	//Calcul calcul = new CalculV2(); 
+	
+	Calcul calcul = FabriqueCalcul.createCalcul();
 
 	public void saisieCalculAffichage() {
 		
