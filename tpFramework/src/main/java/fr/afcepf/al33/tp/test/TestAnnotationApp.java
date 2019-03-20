@@ -1,13 +1,24 @@
 package fr.afcepf.al33.tp.test;
 
+import java.lang.reflect.Field;
+
 import fr.afcepf.al33.tp.data.MyPojo;
 
 public class TestAnnotationApp {
 	
 	public static void verifierValidite(Object objet) {
-		Class metaClasse = objet.getClass();
-		System.out.println(metaClasse.getName());
-		//...
+		try {
+			Class metaClasse = objet.getClass();
+			System.out.println(metaClasse.getName());
+			for(Field f : metaClasse.getDeclaredFields()) {
+				System.out.println("nom attribut: " + f.getName());
+				f.setAccessible(true); //rendre accessible un attribut privé
+				Object valAttribut = f.get(objet);
+				System.out.println("valAttribut: " + valAttribut);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
 	}
 	
 
