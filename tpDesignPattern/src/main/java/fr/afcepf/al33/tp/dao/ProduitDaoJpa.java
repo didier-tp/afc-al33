@@ -2,6 +2,16 @@ package fr.afcepf.al33.tp.dao;
 
 public class ProduitDaoJpa {
 	
+	private String data; //+get/set
+	
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
 	private static ProduitDaoJpa uniqueInstance=null;
 	
 	public synchronized static ProduitDaoJpa getInstance() {
