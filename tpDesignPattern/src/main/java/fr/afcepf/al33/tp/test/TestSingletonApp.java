@@ -11,7 +11,6 @@ public class TestSingletonApp {
 	}
 
 	public static void main(String[] args) {
-		
 		ProduitDaoJpa produitDao = null; 
 		
 		//vérifier new direct interdit si constructeur privé 
