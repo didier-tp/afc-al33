@@ -6,6 +6,7 @@ public class CalculV1 implements Calcul {
 	public double racineCarree(double x) {
 		return Math.sqrt(x);
 	}
+	
 
 	@Override
 	public int factorielle(int n) {

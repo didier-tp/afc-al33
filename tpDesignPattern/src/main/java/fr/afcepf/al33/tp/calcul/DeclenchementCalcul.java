@@ -2,6 +2,8 @@ package fr.afcepf.al33.tp.calcul;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 /*
  * cette classe va :
  *    - permettre de saisir la valeur de x (au clavier , à la console)
@@ -17,9 +19,10 @@ public class DeclenchementCalcul {
 	public void saisieCalculAffichage() {
 		
 		double x=0;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("x:");
-		x=sc.nextDouble();
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("x:");
+		//x=sc.nextDouble();
+		x= Double.parseDouble( JOptionPane.showInputDialog(null,"x:") );
 		
 		//double racineX = Math.sqrt(x);
 		//double racineX = Math.pow(x,0.5);
@@ -28,6 +31,7 @@ public class DeclenchementCalcul {
 		int fact = calcul.factorielle(n);
 		
 		System.out.println("racineX="+racineX);
+		//JOptionPane.showMessageDialog(null, "racineX="+racineX);
 		System.out.println("n="+n);
 		System.out.println("factorielle="+fact);
 	}
