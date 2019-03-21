@@ -2,20 +2,22 @@ package fr.afcepf.al33.tp.test;
 
 import fr.afcepf.al33.tp.afficheur.Afficheur;
 import fr.afcepf.al33.tp.afficheur.AfficheurV1;
+import fr.afcepf.al33.tp.afficheur.LogDeco;
+import fr.afcepf.al33.tp.afficheur.MajDeco;
 
 public class TestDecorateurApp {
 
 	public static void main(String[] args) {
 		Afficheur afficheur=null;
 		Afficheur afficheurSimple = new AfficheurV1();
-		//Afficheur afficheurMaj = new MajDeco(afficheurSimple);
-		//Afficheur afficheurLog = new LogDeco(afficheurSimple);
-		//Afficheur afficheurLogMaj = new LogDeco(afficheurMaj);
+		Afficheur afficheurMaj = new MajDeco(afficheurSimple);
+		Afficheur afficheurLog = new LogDeco(afficheurSimple);
+		Afficheur afficheurLogMaj = new LogDeco(afficheurMaj);
 		
-		afficheur=afficheurSimple;
+		//afficheur=afficheurSimple;
 		//afficheur=afficheurLog;
 		//afficheur=afficheurMaj;
-		//afficheur=afficheurLogMaj;
+		afficheur=afficheurLogMaj;
 		
 		afficheur.afficherObjet("MontRouge");
 	}
