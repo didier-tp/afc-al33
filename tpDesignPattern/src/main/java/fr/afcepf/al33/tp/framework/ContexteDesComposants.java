@@ -25,16 +25,21 @@ public class ContexteDesComposants {
 	
 	private boolean estCompatibleAvec(Object dependance,String interfaceName) {
 		boolean ok=false;
-		
+		try {
+		Class<?> interfaceMetaClasse = Class.forName(interfaceName);
+		ok = interfaceMetaClasse.isAssignableFrom(dependance.getClass());
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		/*
 		String nomClasseDependance = dependance.getClass().getName();
-		/*System.out.println("estCompatibleAvec appelé avec nomClasseDependance="+nomClasseDependance
-				   +" et interfaceName=" + interfaceName);*/
 		if(nomClasseDependance.equals("fr.afcepf.al33.tp.service.ServiceProduitImpl")
 				&& interfaceName.equals("fr.afcepf.al33.tp.service.ServiceProduit"))
 			ok=true;
 		if(nomClasseDependance.equals("fr.afcepf.al33.tp.dao.DaoProduitV1")
 				&& interfaceName.equals("fr.afcepf.al33.tp.dao.DaoProduit"))
 			ok=true;
+			*/
 		return ok;
 	}
 	
