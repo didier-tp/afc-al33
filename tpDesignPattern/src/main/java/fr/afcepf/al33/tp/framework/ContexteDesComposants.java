@@ -25,7 +25,10 @@ public class ContexteDesComposants {
 	
 	private boolean estCompatibleAvec(Object dependance,String interfaceName) {
 		boolean ok=false;
+		
 		String nomClasseDependance = dependance.getClass().getName();
+		/*System.out.println("estCompatibleAvec appelé avec nomClasseDependance="+nomClasseDependance
+				   +" et interfaceName=" + interfaceName);*/
 		if(nomClasseDependance.equals("fr.afcepf.al33.tp.service.ServiceProduitImpl")
 				&& interfaceName.equals("fr.afcepf.al33.tp.service.ServiceProduit"))
 			ok=true;
@@ -42,7 +45,7 @@ public class ContexteDesComposants {
 			Inject annotInject = f.getAnnotation(Inject.class);
 			if(annotInject!=null) {
 				for(Object dependance : mapComposants.values()) {
-				    if( estCompatibleAvec(dependance,f.getName())) {
+				    if( estCompatibleAvec(dependance,f.getType().getName())) {
 				    	f.set(composant,dependance /* valeur à affecter*/);
 				    }
 				}
