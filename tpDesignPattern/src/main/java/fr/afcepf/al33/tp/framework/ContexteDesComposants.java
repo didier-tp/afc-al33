@@ -24,7 +24,15 @@ public class ContexteDesComposants {
 	}
 	
 	private boolean estCompatibleAvec(Object dependance,String interfaceName) {
-		return true;
+		boolean ok=false;
+		String nomClasseDependance = dependance.getClass().getName();
+		if(nomClasseDependance.equals("fr.afcepf.al33.tp.service.ServiceProduitImpl")
+				&& interfaceName.equals("fr.afcepf.al33.tp.service.ServiceProduit"))
+			ok=true;
+		if(nomClasseDependance.equals("fr.afcepf.al33.tp.dao.DaoProduitV1")
+				&& interfaceName.equals("fr.afcepf.al33.tp.dao.DaoProduit"))
+			ok=true;
+		return ok;
 	}
 	
 	private void gererInjection(Object composant) throws Exception{
@@ -35,7 +43,7 @@ public class ContexteDesComposants {
 			if(annotInject!=null) {
 				for(Object dependance : mapComposants.values()) {
 				    if( estCompatibleAvec(dependance,f.getName())) {
-				    	f.set(composant,dependance);
+				    	f.set(composant,dependance /* valeur à affecter*/);
 				    }
 				}
 			}
