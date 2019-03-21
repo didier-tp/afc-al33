@@ -19,6 +19,7 @@ public class ContexteDesComposants {
 		listeNomClasses.add("fr.afcepf.al33.tp.service.ServiceProduitImpl");
 		listeNomClasses.add("fr.afcepf.al33.tp.dao.DaoProduitV1");
 		listeNomClasses.add("fr.afcepf.al33.tp.test.MainApp");
+		listeNomClasses.add("fr.afcepf.al33.tp.traducteur.TraducteurV1");
 		//il serait possible de scanner automatiquement ce qui existe en dessous
 		//de fr.afcepf.al33.tp pour découvrir les classes à prendre en charge
 	}
