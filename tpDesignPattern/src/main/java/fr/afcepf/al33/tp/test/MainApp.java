@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import fr.afcepf.al33.tp.framework.ContexteDesComposants;
 import fr.afcepf.al33.tp.service.ServiceProduit;
 
 public class MainApp {
@@ -20,7 +21,22 @@ public class MainApp {
 	}
 	
    public static void main(String[] args) {
-	   //version qui ne fonctionne pas:
-	   (new MainApp()).doJob();
+	   ContexteDesComposants contexte = new ContexteDesComposants();
+	   contexte.construire_et_relier_composants();
+	   MainApp composantPrincipal = (MainApp)
+			   contexte.acceder_a_un_des_composants_construits("fr.afcepf.al33.tp.test.MainApp");
+	   composantPrincipal.doJob();
     }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 }
