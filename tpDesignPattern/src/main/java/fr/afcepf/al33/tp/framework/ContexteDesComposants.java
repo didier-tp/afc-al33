@@ -26,8 +26,8 @@ public class ContexteDesComposants {
 	private boolean estCompatibleAvec(Object dependance,String interfaceName) {
 		boolean ok=false;
 		try {
-		Class<?> interfaceMetaClasse = Class.forName(interfaceName);
-		ok = interfaceMetaClasse.isAssignableFrom(dependance.getClass());
+			Class<?> interfaceMetaClasse = Class.forName(interfaceName);
+			ok = interfaceMetaClasse.isAssignableFrom(dependance.getClass());
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
