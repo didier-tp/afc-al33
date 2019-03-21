@@ -2,11 +2,13 @@ package fr.afcepf.al33.tp.data;
 
 import fr.afcepf.al33.tp.annot.MadMax;
 
+
 public class MyPojo {
 	
 	private String label;//+get/set
 	
-	@MadMax(value=100,comment="super")
+	
+	@MadMax(value=100,comment="valeur maxi autorisee = 100")
 	private long valeurQuiVaPeutEtreBien;//+get/set
 	
 
