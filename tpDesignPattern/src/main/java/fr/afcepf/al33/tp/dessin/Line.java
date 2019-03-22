@@ -1,7 +1,5 @@
 package fr.afcepf.al33.tp.dessin;
 
-import java.awt.Graphics;
-
 public class Line extends Fig2D {
 	
 	private int x1,y1,x2,y2;

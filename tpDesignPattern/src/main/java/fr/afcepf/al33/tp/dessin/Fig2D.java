@@ -1,8 +1,5 @@
 package fr.afcepf.al33.tp.dessin;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 public abstract class Fig2D {
 	protected String lineColor="black";
 	
