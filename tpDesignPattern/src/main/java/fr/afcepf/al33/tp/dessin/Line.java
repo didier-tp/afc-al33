@@ -15,11 +15,14 @@ public class Line extends Fig2D {
 		this.x2 = x2;
 		this.y2 = y2;
 	}
+	
+	
 
+	/*
 	@Override
 	public void dessiner(Graphics g) {
 		g.drawLine(x1, y1, x2, y2);
-	}
+	}*/
 
 	public int getX1() {
 		return x1;
@@ -51,6 +54,13 @@ public class Line extends Fig2D {
 
 	public void setY2(int y2) {
 		this.y2 = y2;
+	}
+
+
+
+	@Override
+	public void performVisit(AbstractFigVisitor v) {
+		v.doActionForLine(this);
 	}
 	
 	

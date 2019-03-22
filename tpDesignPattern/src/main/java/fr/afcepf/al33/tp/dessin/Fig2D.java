@@ -13,11 +13,16 @@ public abstract class Fig2D {
 	public void setLineColor(String lineColor) {
 		this.lineColor = lineColor;
 	}
-
+	
+	public abstract void performVisit(AbstractFigVisitor v);
+	
+   /*
+    //Ancien code pas réutilisable (car spécifique à awt/swing)
 	public void dessinerAvecCouleur(Graphics g) {
 		g.setColor(Color.decode(this.lineColor));
 		this.dessiner(g);
 	}
 	
 	public abstract void dessiner(Graphics g);
+	*/
 }
