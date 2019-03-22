@@ -37,7 +37,7 @@ public class SwingWindow  extends JFrame{
 		listFig.add(l1);
 		
 		Line l2 = new Line(80,80, 30,80);	l2.setLineColor("#00aa00");
-		listFig.add(l2);
+		listFig.add(l2); 
 		
 		SwingDrawingVisitor swingVisitor = 
 				new SwingDrawingVisitor(this.getContentPane().getGraphics());
