@@ -21,6 +21,8 @@ import lombok.Setter;
 @Entity
 @NamedQueries({
    @NamedQuery(name="Client.findAll",query="SELECT c FROM Client c"),
+   @NamedQuery(name="Client.findComptesOfClientSimple",
+               query="SELECT cpt FROM Compte cpt WHERE cpt.client.numero = :numClient") ,
    @NamedQuery(name="Client.findComptesOfClient",
               query="SELECT cpt FROM Client cli INNER JOIN cli.comptes cpt WHERE cli.numero = :numClient")
 })
