@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al33.tp.entity.Client;
+import fr.afcepf.al33.tp.entity.Compte;
 
 @Repository // composant spring de type DAO (Data Access Object)
 @Transactional // begin() et commit()/rollback() déclenchés automatiquement
@@ -48,6 +49,26 @@ public class DaoClientJpa implements DaoClient {
 	public void deleteById(Long numCli) {
 		Client cli =entityManager.find(Client.class, numCli);
 		entityManager.remove(cli);
+	}
+
+	@Override
+	public List<Compte> findComptesOfClient(Long numClient) {
+		//Solution1 (via lien @OneToMany):
+		Client cli = entityManager.find(Client.class, numClient);
+		cli.getComptes().size(); //pour eviter lazyException
+		return cli.getComptes();
+	}
+
+	@Override
+	public void addCompteForClient(Long numClient, Long numCompte) {
+		Compte cpt = entityManager.find(Compte.class, numCompte);
+		Client client = entityManager.find(Client.class, numClient);
+		
+		cpt.setClient(client);//on effectue la liaison du coté principal
+		//(où il n'y a pas mappedBy) pour la relation soit bien sauvegardée en base
+		//ici dans la colonne clef étrangère
+		
+		entityManager.merge(cpt);//faculatif à l'état persistant
 	}
 
 }

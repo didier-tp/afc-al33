@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al33.tp.dao.DaoClient;
 import fr.afcepf.al33.tp.entity.Client;
+import fr.afcepf.al33.tp.entity.Compte;
 
 
 @Service //héritant de @Component
@@ -56,6 +57,16 @@ public class ServiceClientImpl implements ServiceClient {
 	@Override
 	public List<Client> rechercherTousClients() {
 		return daoClient.findAll();
+	}
+
+	@Override
+	public List<Compte> rechercherComptesDuClient(Long numClient) {
+		return daoClient.findComptesOfClient(numClient);
+	}
+
+	@Override
+	public void ajouterComptePourClient(Long numClient, Long numCompte) {
+		daoClient.addCompteForClient(numClient,numCompte);
 	}
 
 	
