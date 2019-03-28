@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 
 /**
@@ -39,6 +40,11 @@ public class Compte implements Serializable {
 	//la colonne idClient de la table Compte va référencer
 	//la clef primaire numero de la table Client
 	private Client client;
+
+	@Override
+	public String toString() {
+		return "Compte [label=" + label + ", numero=" + numero + ", solde=" + solde + "]";
+	}
 
 	
 }
