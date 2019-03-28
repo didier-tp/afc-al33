@@ -26,7 +26,8 @@ public class DaoClientJpa implements DaoClient {
 
 	@Override
 	public List<Client> findAll() {
-		return null;
+		return entityManager.createQuery("SELECT c FROM Client c", Client.class)
+				            .getResultList();
 	}
 
 	@Override

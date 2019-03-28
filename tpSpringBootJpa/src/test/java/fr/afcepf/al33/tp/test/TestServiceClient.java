@@ -1,5 +1,7 @@
 package fr.afcepf.al33.tp.test;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,12 +32,18 @@ public class TestServiceClient {
 	
 	@Test
 	public void test_CRUD_Client_via_Service_deleguant_au_dao() {
+		    Client clicli = new Client(null,"Aire","axelle","0102030405" ,"axelle.aire@ici_ou_la.fr");
+		    serviceClient.saveOrUpdateClient(clicli);
 			//1 . Ajouter entité en base
 			Client cli = new Client(null,"Therieur","alain","0102030405" ,"alain.therieur@ici_ou_la.fr");
 			cli.setAdresse(new Adresse("12, rue elle " , "75002" , "Paris"));
 			serviceClient.saveOrUpdateClient(cli);
 			Long numCli = cli.getNumero(); 
 			//2.  Verifier entité ajoutée que l'on recharge depuis la base
+			List<Client> clients = serviceClient.rechercherTousClients();
+			Assert.assertTrue(clients.size()>=2);
+			System.out.println("clients="+clients);
+			
 			Client cliRelu = serviceClient.rechercherEtMajClientParNumero(numCli);
 			Assert.assertTrue(cliRelu.getPrenom().equals("alain"));
 			logger.info("apres ajout et relecture  , cliRelu="+cliRelu);

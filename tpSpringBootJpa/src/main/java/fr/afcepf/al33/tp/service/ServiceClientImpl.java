@@ -1,5 +1,7 @@
 package fr.afcepf.al33.tp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +51,11 @@ public class ServiceClientImpl implements ServiceClient {
 		//en fin de méthode , commit automatique si pas d'exception.
 		//le commit() déclencle le flush() qui update automatiquement
 		//les valeurs modifiées en mémoire sur les objets persistants 
+	}
+
+	@Override
+	public List<Client> rechercherTousClients() {
+		return daoClient.findAll();
 	}
 
 	

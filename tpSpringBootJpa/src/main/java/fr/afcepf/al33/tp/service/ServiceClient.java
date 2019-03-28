@@ -1,5 +1,7 @@
 package fr.afcepf.al33.tp.service;
 
+import java.util.List;
+
 import fr.afcepf.al33.tp.entity.Client;
 
 /**
@@ -15,6 +17,7 @@ import fr.afcepf.al33.tp.entity.Client;
 public interface ServiceClient {
 		public Client rechercherClientParNumero(Long numero);
 		public Client rechercherEtMajClientParNumero(Long numero);
+		public List<Client> rechercherTousClients();
 		//public List<Compte> rechercherComptesDuClient(Long numClient);
 		//public void ajouterComptePourClient(Long numClient,Long numCompte);
 		public void saveOrUpdateClient(Client cpt);
