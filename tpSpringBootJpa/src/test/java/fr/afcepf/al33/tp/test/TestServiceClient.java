@@ -12,8 +12,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import fr.afcepf.al33.tp.MySpringBootApplication;
+import fr.afcepf.al33.tp.dao.DaoCompte;
 import fr.afcepf.al33.tp.entity.Adresse;
 import fr.afcepf.al33.tp.entity.Client;
+import fr.afcepf.al33.tp.entity.Compte;
 import fr.afcepf.al33.tp.service.ServiceClient;
 
 @RunWith(SpringRunner.class)
@@ -27,7 +29,30 @@ public class TestServiceClient {
 	//@Autowired
 	//private ServiceCompte serviceCompte ; //annexe pour  tester
 	
+	@Autowired //comme @Inject
+	private DaoCompte daoCompte;
 	
+	@Test
+	public void testCompteEtClient() {
+		Client cli = new Client(null,"Therieur","alain","0102030405" ,"alain.therieur@ici_ou_la.fr");
+		serviceClient.saveOrUpdateClient(cli);
+		
+		Compte cpt = new Compte();cpt.setLabel("compteA"); cpt.setSolde(50.0);
+		daoCompte.save(cpt);
+		
+		Compte cptB = new Compte();cptB.setLabel("compteB"); cptB.setSolde(100.0);
+		daoCompte.save(cptB);
+		
+		Compte cptC = new Compte();cptC.setLabel("compteC"); cptB.setSolde(150.0);
+		daoCompte.save(cptC);
+		
+		serviceClient.ajouterComptePourClient(cli.getNumero(), cpt.getNumero());
+		serviceClient.ajouterComptePourClient(cli.getNumero(), cptB.getNumero());
+		
+		List<Compte> listeCpt = serviceClient.rechercherComptesDuClient(cli.getNumero());
+		Assert.assertTrue(listeCpt.size()>=2);
+		System.out.println("listeCpt="+listeCpt);
+	}
 	
 	
 	@Test
