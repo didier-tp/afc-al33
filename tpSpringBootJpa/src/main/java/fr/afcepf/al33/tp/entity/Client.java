@@ -1,10 +1,14 @@
 package fr.afcepf.al33.tp.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import lombok.Getter;
@@ -28,7 +32,9 @@ public class Client {
 	private String email;
 	//private String password;
 	
-	
+	@OneToMany(mappedBy="client",fetch=FetchType.LAZY)
+	//mappedBy="nom java de la relation inverse manyToOne"
+	private List<Compte> comptes;
 	
     @Transient //temporairement
 	private Adresse adresse;
