@@ -1,35 +1,25 @@
 package fr.afcepf.al33.tp.entity;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name="Client")
-@Getter @Setter @NoArgsConstructor
-@NamedQueries({
-	@NamedQuery(name="Client.findAll",query="SELECT c FROM Client c"),
-})
 
+@Getter @Setter @NoArgsConstructor
+
+@Entity
 public class Client {
 	
-	@Id  
-	@Column(name="num_client")
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long numero;
+	
 	private String nom;
 	private String prenom;
 
@@ -39,7 +29,7 @@ public class Client {
 	
 	
 	
-    @Embedded
+    @Transient //temporairement
 	private Adresse adresse;
 	
 	

@@ -21,7 +21,7 @@ public class DaoClientJpa implements DaoClient {
 
 	@Override
 	public Client findById(Long num) {
-		return null;
+		return entityManager.find(Client.class, num);//SELECT ...FOM WHERE numero=...
 	}
 
 	@Override
@@ -31,12 +31,19 @@ public class DaoClientJpa implements DaoClient {
 
 	@Override
 	public void save(Client cli) {
-		
+		if(cli.getNumero()==null) {
+			entityManager.persist(cli);//insert into ... (et auto_increment)
+			//après le .persist() , cli.getNumero() n'est plus null.
+		}
+		else {
+			entityManager.merge(cli);//update ...
+		}
 	}
 
 	@Override
 	public void deleteById(Long numCli) {
-		
+		Client cli =entityManager.find(Client.class, numCli);
+		entityManager.remove(cli);
 	}
 
 }

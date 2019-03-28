@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Embeddable
+
 @Getter @Setter @NoArgsConstructor @ToString
 public class Adresse {
 	
