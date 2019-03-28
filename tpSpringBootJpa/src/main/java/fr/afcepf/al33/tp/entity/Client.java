@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -18,7 +19,13 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
-@NamedQuery(name="Client.findAll",query="SELECT c FROM Client c")
+@NamedQueries({
+   @NamedQuery(name="Client.findAll",query="SELECT c FROM Client c"),
+   @NamedQuery(name="Client.findComptesOfClient",
+              query="SELECT cpt FROM Client cli INNER JOIN cli.comptes cpt WHERE cli.numero = :numClient")
+})
+/* :numClient pour .setParameter("numClient", ....) , 
+et  cpt est un alias pour un membre de la collection cli.comptes */
 public class Client {
 	
 	@Id

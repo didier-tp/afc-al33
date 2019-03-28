@@ -53,10 +53,19 @@ public class DaoClientJpa implements DaoClient {
 
 	@Override
 	public List<Compte> findComptesOfClient(Long numClient) {
+		/*
 		//Solution1 (via lien @OneToMany):
 		Client cli = entityManager.find(Client.class, numClient);
+		//appeler .size() sur une lazy collection
+		//provoque une boucle for interne pour connaître la taille
+		//les valeurs des comptes remontent alors immédiatement des tables vers la mémoire java
 		cli.getComptes().size(); //pour eviter lazyException
 		return cli.getComptes();
+		*/
+		//Solution 2 via NamedQuery:
+		return entityManager.createNamedQuery("Client.findComptesOfClient", Compte.class)
+				.setParameter("numClient", numClient)
+				.getResultList();
 	}
 
 	@Override

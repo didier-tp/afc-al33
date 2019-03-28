@@ -43,7 +43,7 @@ public class TestServiceClient {
 		Compte cptB = new Compte();cptB.setLabel("compteB"); cptB.setSolde(100.0);
 		daoCompte.save(cptB);
 		
-		Compte cptC = new Compte();cptC.setLabel("compteC"); cptB.setSolde(150.0);
+		Compte cptC = new Compte();cptC.setLabel("compteC"); cptC.setSolde(150.0);
 		daoCompte.save(cptC);
 		
 		serviceClient.ajouterComptePourClient(cli.getNumero(), cpt.getNumero());
