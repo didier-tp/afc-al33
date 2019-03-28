@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Transient;
 
 import lombok.Getter;
@@ -12,8 +13,8 @@ import lombok.Setter;
 
 
 @Getter @Setter @NoArgsConstructor
-
 @Entity
+@NamedQuery(name="Client.findAll",query="SELECT c FROM Client c")
 public class Client {
 	
 	@Id
