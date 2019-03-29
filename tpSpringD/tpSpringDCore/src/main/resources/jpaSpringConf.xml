@@ -19,6 +19,7 @@ http://www.springframework.org/schema/context/spring-context.xsd" >
      <property name="location" value="classpath:/database.properties" />
 </bean>
 
+<!-- DataSource.getConnection() / pour connection Database H2 ou MySql -->
 <bean id="myDataSource"
 class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -27,6 +28,7 @@ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="password" value="${jdbc.password}" />
 </bean>
 
+<!-- config technique pour intégrer JPA dans Spring -->
 <bean id="myEmf"
 class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 <property name="dataSource" ref="myDataSource"/>
@@ -35,11 +37,13 @@ class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 </property>
 </bean>
 
+<!-- transactionManager sert à envoyer l'ordre "commit" ou "rollback" vers jpa + database -->
 <bean id="transactionManager"
 class="org.springframework.orm.jpa.JpaTransactionManager">
 <property name="entityManagerFactory" ref="myEmf"/>
 </bean>
 
+<!-- pour que @Transactional soit analysé dans le code java et bien géré par Spring -->
 <tx:annotation-driven transaction-manager="transactionManager" />
 
 
