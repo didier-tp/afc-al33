@@ -2,17 +2,23 @@ package fr.afcepf.al33.tp.service;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.afcepf.al33.tp.dao.DaoClient;
 import fr.afcepf.al33.tp.entity.Client;
 
+@Service //ou bien @Component
 public class ServiceClientImpl implements ServiceClient {
 	
+	@Autowired //ressemble à @EJB ou @Inject
 	private DaoClient daoClient;//null tout au debut avant injection dependance
-	
+	/*
 	//methode d'injection de dépendance appelée par spring
 	public void setDaoClient(DaoClient daoClient) {
 		this.daoClient = daoClient;
 	}
+	*/
 	
 	public ServiceClientImpl() {
 		System.out.println("dans constructeur , daoClient inutilisable=" +daoClient );

@@ -13,9 +13,14 @@ http://www.springframework.org/schema/tx/spring-tx.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd" >
 
+<!-- scope="singleton"  par defaut sur bean -->
+<bean id="daoClientSimu" class="fr.afcepf.al33.tp.dao.DaoClientSimu" /> 
 
-<context:annotation-config /> <!-- pour demander aÂ  spring d'analyser des annotations -->
+<bean id="serviceClientImpl" class="fr.afcepf.al33.tp.service.ServiceClientImpl" >
+          <property name="daoClient" ref="daoClientSimu" />
+   <!--  <property name="daoClient" ref="daoClientJpa" /> -->
+</bean>
 
-<context:component-scan base-package="fr.afcepf.al33.tp"/>
+<context:annotation-config /> <!-- pour demander a  spring d'analyser des annotations -->
 
 </beans>

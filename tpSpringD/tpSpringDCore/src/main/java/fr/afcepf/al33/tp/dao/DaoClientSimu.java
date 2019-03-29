@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import fr.afcepf.al33.tp.entity.Client;
 
+@Component //@Repository
 public class DaoClientSimu implements DaoClient {
 	private long maxNumClient=0;
 	private Map<Long,Client> mapClients = new HashMap<>();
