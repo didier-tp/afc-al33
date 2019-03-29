@@ -15,8 +15,8 @@ public class MyTestApp {
 		ServiceClient s =  contextSpring.getBean(ServiceClient.class);
 		
         Client c1=new Client();c1.setNom("toto");
-        s.sauvegarderClient(c1);
-        Client c1Relu = s.rechercherClientParNum(c1.getNumero());
+        s.saveOrUpdateClient(c1);
+        Client c1Relu = s.rechercherClientParNumero(c1.getNumero());
         System.out.println("c1Relu=" + c1Relu);
 	}
 

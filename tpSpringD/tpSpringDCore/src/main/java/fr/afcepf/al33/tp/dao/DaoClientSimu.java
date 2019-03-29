@@ -8,8 +8,9 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import fr.afcepf.al33.tp.entity.Client;
+import fr.afcepf.al33.tp.entity.Compte;
 
-@Component //@Repository
+//@Component //@Repository
 public class DaoClientSimu implements DaoClient {
 	private long maxNumClient=0;
 	private Map<Long,Client> mapClients = new HashMap<>();
@@ -36,5 +37,19 @@ public class DaoClientSimu implements DaoClient {
 	public void deleteById(Long numero) {
 		mapClients.remove(numero);
 	}
+
+	@Override
+	public List<Compte> findComptesOfClient(Long numClient) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addCompteForClient(Long numClient, Long numCompte) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 }

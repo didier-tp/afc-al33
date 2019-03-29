@@ -1,44 +1,74 @@
 package fr.afcepf.al33.tp.service;
 
-import javax.annotation.PostConstruct;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al33.tp.dao.DaoClient;
 import fr.afcepf.al33.tp.entity.Client;
+import fr.afcepf.al33.tp.entity.Compte;
 
-@Service //ou bien @Component
+
+@Service //h√©ritant de @Component
+@Transactional
 public class ServiceClientImpl implements ServiceClient {
 	
-	@Autowired //ressemble ‡ @EJB ou @Inject
-	private DaoClient daoClient;//null tout au debut avant injection dependance
-	/*
-	//methode d'injection de dÈpendance appelÈe par spring
-	public void setDaoClient(DaoClient daoClient) {
-		this.daoClient = daoClient; 
-	}
-	*/
 	
-	public ServiceClientImpl() {
-		System.out.println("dans constructeur , daoClient inutilisable=" +daoClient );
-	}
+	@Autowired
+	private DaoClient daoClient; //dao vers lequel d√©l√©guer
 	
-	@PostConstruct //OK avec EJB, JSF, Spring, ...
-	public void initQueJaime() {
-		//mÈthode appelÈe aprËs toutes les injections effectuÈes 
-		System.out.println("dans mÈthode prefixÈe par @PostConstruct , daoClient=" +daoClient );
+	
+	
+	//@Autowired
+	//private DaoCompte daoCompte; //dao vers lequel d√©l√©guer
+	
+
+	@Override
+	public Client rechercherClientParNumero(Long numero) {
+		return daoClient.findById(numero);/*.orElse(null);*/
 	}
 
 	@Override
-	public Client rechercherClientParNum(Long num) {
-		return daoClient.findById(num);
+	public void saveOrUpdateClient(Client cpt) {
+			daoClient.save(cpt);
 	}
 
 	@Override
-	public void sauvegarderClient(Client c) {
-		daoClient.save(c);
-        //...
+	public void supprimerClient(Long numClient) {
+		daoClient.deleteById(numClient);
 	}
 
+	@Override
+	public Client rechercherEtMajClientParNumero(Long numero) {
+		//en d√©but de m√©thode , nouvel entityManager 
+		//et d√©but de transaction automatique car @Transactional
+		Client cli = daoClient.findById(numero);
+		cli.setNom(cli.getNom().toUpperCase());
+		//pas besoin de d√©clencher ici
+		//daoClient.save() (ni indirectement entityManager.merge())
+		return cli;
+		//en fin de m√©thode , commit automatique si pas d'exception.
+		//le commit() d√©clencle le flush() qui update automatiquement
+		//les valeurs modifi√©es en m√©moire sur les objets persistants 
+	}
+
+	@Override
+	public List<Client> rechercherTousClients() {
+		return daoClient.findAll();
+	}
+
+	@Override
+	public List<Compte> rechercherComptesDuClient(Long numClient) {
+		return daoClient.findComptesOfClient(numClient);
+	}
+
+	@Override
+	public void ajouterComptePourClient(Long numClient, Long numCompte) {
+		daoClient.addCompteForClient(numClient,numCompte);
+	}
+
+	
+	
 }

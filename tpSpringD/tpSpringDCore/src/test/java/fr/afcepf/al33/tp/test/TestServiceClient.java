@@ -20,8 +20,8 @@ public class TestServiceClient {
 	@Test
 	public void testClient() {
 		Client c1=new Client();c1.setNom("toto");
-		serviceClient.sauvegarderClient(c1);
-        Client c1Relu = serviceClient.rechercherClientParNum(c1.getNumero());
+		serviceClient.saveOrUpdateClient(c1);
+        Client c1Relu = serviceClient.rechercherClientParNumero(c1.getNumero());
         System.out.println("c1Relu=" + c1Relu);
         Assert.assertTrue("toto".equals(c1Relu.getNom()));
 	}
