@@ -23,4 +23,9 @@ public class DaoCompteJpa implements DaoCompte {
 			entityManager.merge(c);
 	}
 
+	@Override
+	public Compte findById(Long num) {
+		return entityManager.find(Compte.class, num);
+	}
+
 }
