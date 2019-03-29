@@ -16,7 +16,7 @@ public class ServiceClientImpl implements ServiceClient {
 	/*
 	//methode d'injection de dépendance appelée par spring
 	public void setDaoClient(DaoClient daoClient) {
-		this.daoClient = daoClient;
+		this.daoClient = daoClient; 
 	}
 	*/
 	
