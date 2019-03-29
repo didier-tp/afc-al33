@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>fr.afcepf.al33</groupId>
-    <artifactId>tpSpring</artifactId>
+    <artifactId>tpSpringD</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>tpSpringWeb</artifactId>
+  <artifactId>tpSpringDWeb</artifactId>
   <packaging>war</packaging>
 </project>
