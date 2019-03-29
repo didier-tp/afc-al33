@@ -13,6 +13,7 @@ public class MyTestApp {
 				 new ClassPathXmlApplicationContext("springConf.xml");
         //ServiceClient s = (ServiceClient) contextSpring.getBean("serviceClientImpl" /*id*/);
 		ServiceClient s =  contextSpring.getBean(ServiceClient.class);
+		
         Client c1=new Client();c1.setNom("toto");
         s.sauvegarderClient(c1);
         Client c1Relu = s.rechercherClientParNum(c1.getNumero());
