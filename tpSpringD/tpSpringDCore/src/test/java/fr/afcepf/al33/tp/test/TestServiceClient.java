@@ -23,7 +23,14 @@ public class TestServiceClient {
 		serviceClient.sauvegarderClient(c1);
         Client c1Relu = serviceClient.rechercherClientParNum(c1.getNumero());
         System.out.println("c1Relu=" + c1Relu);
-        Assert.assertTrue("toto".contentEquals(c1Relu.getNom()));
+        Assert.assertTrue("toto".equals(c1Relu.getNom()));
 	}
 
+	
+	
+	
+	
+	
+	
+	
 }
