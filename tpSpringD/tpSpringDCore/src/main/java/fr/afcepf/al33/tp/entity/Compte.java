@@ -36,7 +36,7 @@ public class Compte implements Serializable {
 	private Double solde;
 	
 	@ManyToOne
-	@JoinColumn(name="idClient")//nom de la colonne clef etrangère 
+	@JoinColumn(name="id_client")//nom de la colonne clef etrangère 
 	//la colonne idClient de la table Compte va référencer
 	//la clef primaire numero de la table Client
 	private Client client;
