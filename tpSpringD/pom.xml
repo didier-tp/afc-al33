@@ -8,4 +8,13 @@
   	<module>tpSpringDWeb</module>
   	<module>tpSpringDCore</module>
   </modules>
+  
+  <!-- ces proprietes seront heritees 
+       par les sous modules/projets ...Core et ...Web -->
+  <properties>
+          <maven.compiler.source>1.8</maven.compiler.source>
+          <maven.compiler.target>1.8</maven.compiler.target>
+          <spring.version>5.1.5.RELEASE</spring.version>
+  </properties>
+  
 </project>

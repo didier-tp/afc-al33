@@ -7,4 +7,36 @@
   </parent>
   <artifactId>tpSpringDWeb</artifactId>
   <packaging>war</packaging>
+  
+  <properties>
+     <failOnMissingWebXml>false</failOnMissingWebXml>
+     <!-- WEB-INF/web.xml est facultatif sur version récente servlet/jsp -->
+  </properties>
+  
+  <dependencies>
+  
+  <!-- spring-web , jsf-de-apache (myfaces) , tpSpringCore -->
+	  <dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>fr.afcepf.al33</groupId>
+	    <artifactId>tpSpringDCore</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	    <!-- tpSpringCore.jar sera placé dans la partie WEB-INF/lib 
+	    de tpSpringWeb.war qui sera déployé dans le webapps de Tomcat -->
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.myfaces.core</groupId>
+	    <artifactId>myfaces-impl</artifactId>
+	    <version>2.3.3</version>
+	</dependency>
+	
+
+  </dependencies>
+  
 </project>
