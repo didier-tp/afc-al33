@@ -1,18 +1,20 @@
 package fr.afcepf.al33.tp.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import fr.afcepf.al33.tp.entity.Compte;
+import fr.afcepf.al33.tp.service.ServiceClient;
 import lombok.Getter;
 import lombok.Setter;
 
-@ManagedBean
-//@RequestScoped
-@SessionScoped
+//@ManagedBean
+//@SessionScoped
+@Component //cette classe sera d'abord gérée par spring, puis ré-utilisée par JSF
+@Scope("request")//ou @Scope("session")
 @Getter @Setter
 public class CompteMBean {
 	
@@ -20,6 +22,16 @@ public class CompteMBean {
 	
 	private List<Compte> comptes; //à afficher via h:dataTable
 	
+	//@ManagedProperty("#{serviceClientImpl}")
+	@Autowired //ressemble à @EJB ou @Inject
+	private ServiceClient serviceClient;
+	
+	public String doSearchComptes() {
+		comptes = serviceClient.rechercherComptesDuClient(this.numClient);
+		return null;
+	}
+	
+	/*
 	public String doSearchComptes() {
 		String suite=null; //rester par defaut sur meme page .xhtml
 		//V1 (simulation) sans spring si database:
@@ -32,7 +44,8 @@ public class CompteMBean {
 		comptes.add(cB);
 		return suite;//si on retourne null on reste sur la meme page xhtml
 		             //si on retourne pageXy on demande a naviguer vers pageXy.xhtml
-	}
+	}*/
+	
 
 	public CompteMBean() {
 	}
