@@ -25,14 +25,22 @@ public class ServiceCompteImpl implements ServiceCompte {
 	}
 
 	@Override //logique métier = virement bancaire
+	//@Transactional ici ou bien au dessus de la classe
 	public void transferer(Double montant, Long numCptDeb, Long numCptCred) {
+		//entityManager et transaction automatiquement initialisés par Spring
+		//dès le début de l'exécution de cette méthode
+		
 		Compte cptDeb = daoCompte.findById(numCptDeb);
 		cptDeb.setSolde(cptDeb.getSolde()-montant);
-		daoCompte.save(cptDeb);//facultatif si cptDeb est persistant (du fait de @Transactional)
+		//daoCompte.save(cptDeb);//facultatif si cptDeb est persistant (du fait de @Transactional)
 		
 		Compte cptCred = daoCompte.findById(numCptCred);
 		cptCred.setSolde(cptCred.getSolde()+montant);
-		daoCompte.save(cptCred);//facultatif si cptCred est persistant (du fait de @Transactional)
+		//daoCompte.save(cptCred);//facultatif si cptCred est persistant (du fait de @Transactional)
+	
+	    //si exception --> rollback automatique (modifs database temporaires non validées)
+		//si pas exception --> commit automatique
+		//et tous les objets à l'état persistant sont automatiquement mis à jour en base
 	}
 
 }
