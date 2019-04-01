@@ -4,5 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
-
+    <application>
+    <!-- pour pouvoir injecter des composants Spring dans JSF.
+         plus précisément , lorsque JSF aura besoin d'un composant ayant
+         tel nom logique , il va d'abord rechercher un bean JSF
+         et s'il trouve pas il va chercher un bean spring -->
+    <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+ </application>
 </faces-config>
