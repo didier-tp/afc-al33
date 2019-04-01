@@ -3,7 +3,7 @@
   
   <context-param>
 	<param-name>contextConfigLocation</param-name>
-	<param-value>classpath:/webSpringConf.xml</param-value>
+	<param-value>classpath*:/springConf.xml</param-value>
 </context-param>
 
 <listener> <!-- pour charger la config Spring des le demarrage de l'appli dans tomcat -->

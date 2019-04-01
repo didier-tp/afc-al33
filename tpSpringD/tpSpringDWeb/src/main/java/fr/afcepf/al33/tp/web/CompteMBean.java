@@ -2,6 +2,8 @@ package fr.afcepf.al33.tp.web;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,14 @@ public class CompteMBean {
 	//@ManagedProperty("#{serviceClientImpl}")
 	@Autowired //ressemble à @EJB ou @Inject
 	private ServiceClient serviceClient;
+	
+	@PostConstruct
+	public void initAfterInjection() {
+		/*Client cli= new Client(.)
+		serviceClient.saveOrUpdateClient(cli);*/
+		//OU BIEN import.sql spécifique à Hibernate
+		//de scr/main/resources du projet ...Core 
+	}
 	
 	public String doSearchComptes() {
 		comptes = serviceClient.rechercherComptesDuClient(this.numClient);
