@@ -1,3 +1,8 @@
+-- fichier import.sql (dans src/main/resources du projet ...Core)
+-- est spécifique a hibernate
+-- il est utilisé au démarrage (juste apres la céation des tables)
+-- si <property name="hibernate.hbm2ddl.auto" value="create" />
+-- dans META-INF/persistence.xml ou config équivalente
 INSERT INTO Client(numero,nom) VALUES(1,'client1');
 INSERT INTO Client(numero,nom) VALUES(2,'client2');
 
