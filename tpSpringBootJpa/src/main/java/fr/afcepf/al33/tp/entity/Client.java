@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,6 +45,7 @@ public class Client {
 	
 	@OneToMany(mappedBy="client",fetch=FetchType.LAZY)
 	//mappedBy="nom java de la relation inverse manyToOne"
+	//@JsonIgnore
 	private List<Compte> comptes;
 	
     @Transient //temporairement

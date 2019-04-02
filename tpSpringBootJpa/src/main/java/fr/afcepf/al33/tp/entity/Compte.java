@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,6 +41,7 @@ public class Compte implements Serializable {
 	@JoinColumn(name="idClient")//nom de la colonne clef etrangère 
 	//la colonne idClient de la table Compte va référencer
 	//la clef primaire numero de la table Client
+	@JsonIgnore
 	private Client client;
 
 	@Override
