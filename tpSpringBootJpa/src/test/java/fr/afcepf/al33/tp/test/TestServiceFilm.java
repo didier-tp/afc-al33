@@ -46,7 +46,7 @@ public class TestServiceFilm {
 		serviceFilm.ajouterlienFilmActeur(filmB.getNumero(), actriceCecile.getId());
 		
 		List<Acteur> acteursDuFilmB = serviceFilm.acteursDuFilm(filmB.getNumero());
-		Assert.assertTrue(acteursDuFilmB.size()>=2);
+		Assert.assertTrue(acteursDuFilmB.size()==2);
 		System.out.println("acteursDuFilmB="+acteursDuFilmB);
 	}
 	
