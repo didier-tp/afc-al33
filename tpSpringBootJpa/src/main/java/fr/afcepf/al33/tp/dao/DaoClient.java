@@ -17,6 +17,6 @@ public interface DaoClient  extends CrudRepository<Client, Long> {
 	*/
 	//méthodes spécifiques:
 	List<Compte> findComptesOfClient(Long numClient);
-	void addCompteForClient(Long numClient, Long numCompte);
+	//void addCompteForClient(Long numClient, Long numCompte);
 	
 }

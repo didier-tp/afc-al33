@@ -70,7 +70,7 @@ public class ServiceClientImpl implements ServiceClient {
 
 	@Override
 	public void ajouterComptePourClient(Long numClient, Long numCompte) {
-		daoClient.addCompteForClient(numClient,numCompte);
+		//daoClient.addCompteForClient(numClient,numCompte);
 	}
 
 	
