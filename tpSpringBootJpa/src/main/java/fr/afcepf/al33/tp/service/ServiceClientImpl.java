@@ -27,7 +27,11 @@ public class ServiceClientImpl implements ServiceClient {
 
 	@Override
 	public Client rechercherClientParNumero(Long numero) {
-		return daoClient.findById(numero);/*.orElse(null);*/
+		// return daoClient.findById(numero); // sans Optional<>
+		return daoClient.findById(numero).orElse(null);
+		//return daoClient.findById(numero).get();
+		//.get renvoie le client encapsulé dans Optional<Client>
+		//si pas null mais renvoie Exception si null
 	}
 
 	@Override
@@ -44,7 +48,7 @@ public class ServiceClientImpl implements ServiceClient {
 	public Client rechercherEtMajClientParNumero(Long numero) {
 		//en début de méthode , nouvel entityManager 
 		//et début de transaction automatique car @Transactional
-		Client cli = daoClient.findById(numero);
+		Client cli = daoClient.findById(numero).get();
 		cli.setNom(cli.getNom().toUpperCase());
 		//pas besoin de déclencher ici
 		//daoClient.save() (ni indirectement entityManager.merge())
@@ -56,7 +60,7 @@ public class ServiceClientImpl implements ServiceClient {
 
 	@Override
 	public List<Client> rechercherTousClients() {
-		return daoClient.findAll();
+		return (List<Client>)daoClient.findAll();
 	}
 
 	@Override
