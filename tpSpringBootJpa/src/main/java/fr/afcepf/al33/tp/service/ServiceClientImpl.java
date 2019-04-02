@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.afcepf.al33.tp.dao.DaoClient;
+import fr.afcepf.al33.tp.dao.DaoCompte;
 import fr.afcepf.al33.tp.entity.Client;
 import fr.afcepf.al33.tp.entity.Compte;
 
@@ -14,15 +15,25 @@ import fr.afcepf.al33.tp.entity.Compte;
 @Service //héritant de @Component
 @Transactional
 public class ServiceClientImpl implements ServiceClient {
-	
-	
 	@Autowired
 	private DaoClient daoClient; //dao vers lequel déléguer
 	
+	@Autowired
+	private DaoCompte daoCompte; //dao vers lequel déléguer
 	
-	
-	//@Autowired
-	//private DaoCompte daoCompte; //dao vers lequel déléguer
+	@Override
+	public void ajouterComptePourClient(Long numClient, Long numCompte) {
+		//daoClient.addCompteForClient(numClient,numCompte);//sans spring-data
+		
+		Compte cpt = daoCompte.findById(numCompte).get();
+		Client client = daoClient.findById(numClient).get();
+		
+		cpt.setClient(client);//on effectue la liaison du coté principal
+		//(où il n'y a pas mappedBy) pour la relation soit bien sauvegardée en base
+		//ici dans la colonne clef étrangère
+		
+		//daoCompte.save(cpt);//faculatif à l'état persistant (@Transactional)
+	}
 	
 
 	@Override
@@ -68,10 +79,7 @@ public class ServiceClientImpl implements ServiceClient {
 		return daoClient.findComptesOfClient(numClient);
 	}
 
-	@Override
-	public void ajouterComptePourClient(Long numClient, Long numCompte) {
-		//daoClient.addCompteForClient(numClient,numCompte);
-	}
+	
 
 	
 	

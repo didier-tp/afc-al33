@@ -18,5 +18,7 @@ public interface DaoClient  extends CrudRepository<Client, Long> {
 	//méthodes spécifiques:
 	List<Compte> findComptesOfClient(Long numClient);
 	//void addCompteForClient(Long numClient, Long numCompte);
+	//Sans spring-data addCompteForClient() codé sur le DaoClientJpa
+	//avec spring-data , c'est codé sur le ServiceClientImpl
 	
 }
