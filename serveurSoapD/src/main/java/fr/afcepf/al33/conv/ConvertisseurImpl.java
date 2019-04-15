@@ -15,6 +15,17 @@ import fr.afcepf.al33.entity.Devise;
 //Run as , Run on serveur en se placant sur le projet serveurSoap
 //si project facet EJB
 
+//NB: Jboss (et d'autres technos java) n'acceptent par defaut (en mode dev)
+//que des requetes provenant de localhost.
+//IL FAUT ajouter l'option -b 0.0.0.0 au démarrage de jboss
+//pour qu'il accepte des requêtes provenant d'autres machines
+//avec eclipse , server_jboss /open / open lauch config 
+//decocher "always update config from runtime" et remplacer -b localhost
+//par -b 0.0.0.0 puis redémarrer jboss (stop et run as run on server)
+
+//test via soap-ui : au niveau de l'url , add new endpoint
+//et remplacer localhost par 192.168.102.74 ou autre (selon ipconfig)
+
 //http://localhost:7979_ou_8080/serveurSoapD/ConvertisseurImpl?wsdl
 //est l'url visible au démarrage dans la console jboss (sous eclipse ou pas)
 @WebService(endpointInterface="fr.afcepf.al33.conv.Convertisseur")
