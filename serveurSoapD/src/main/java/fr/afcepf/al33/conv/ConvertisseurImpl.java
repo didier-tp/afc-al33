@@ -12,6 +12,9 @@ import fr.afcepf.al33.entity.Devise;
 //@Local 
 @Remote
 
+//Run as , Run on serveur en se placant sur le projet serveurSoap
+//si project facet EJB
+
 //http://localhost:7979_ou_8080/serveurSoapD/ConvertisseurImpl?wsdl
 //est l'url visible au démarrage dans la console jboss (sous eclipse ou pas)
 @WebService(endpointInterface="fr.afcepf.al33.conv.Convertisseur")
