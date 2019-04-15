@@ -45,7 +45,7 @@ public class Client {
 	
 	@OneToMany(mappedBy="client",fetch=FetchType.LAZY)
 	//mappedBy="nom java de la relation inverse manyToOne"
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Compte> comptes;
 	
     @Transient //temporairement
