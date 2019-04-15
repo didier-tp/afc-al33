@@ -15,13 +15,11 @@ public class DeviseDaoImpl implements DeviseDao {
 	private EntityManager entityManager;
 
 	public DeviseDaoImpl() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Devise getDeviseByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Devise.class, code);
 	}
 
 }
