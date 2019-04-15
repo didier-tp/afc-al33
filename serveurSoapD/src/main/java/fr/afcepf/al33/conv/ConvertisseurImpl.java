@@ -11,6 +11,9 @@ import fr.afcepf.al33.entity.Devise;
 @Stateless
 //@Local 
 @Remote
+
+//http://localhost:7979_ou_8080/serveurSoapD/ConvertisseurImpl?wsdl
+//est l'url visible au démarrage dans la console jboss (sous eclipse ou pas)
 @WebService(endpointInterface="fr.afcepf.al33.conv.Convertisseur")
 public class ConvertisseurImpl implements Convertisseur {
 	
