@@ -3,7 +3,7 @@ package fr.afcepf.al33.serveur;
 import javax.xml.ws.Endpoint;
 
 import fr.afcepf.al33.conv.ConvertisseurImpl;
-
+//https://github.com/didier-tp/afc-al33
 public class StandaloneServTestApp {
 
 	public StandaloneServTestApp() {
