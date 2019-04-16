@@ -1,5 +1,8 @@
 package fr.afcepf.al33.rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,12 @@ public class DeviseRestCtrl {
 	@RequestMapping(value="/{codeDevise}" , method=RequestMethod.GET)
 	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		return deviseDao.findById(codeDevise).get();
+	}
+	
+	//URL= http://localhost:8080/springBootWebService/rest/devises
+	@RequestMapping(value="" , method=RequestMethod.GET)
+	public List<Devise> getDevises() {
+			return (List<Devise>) deviseDao.findAll();
 	}
 
 }
