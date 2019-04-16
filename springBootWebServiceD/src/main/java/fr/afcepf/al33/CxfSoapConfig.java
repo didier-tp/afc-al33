@@ -37,6 +37,8 @@ public class CxfSoapConfig {
         Bus bus = (Bus) applicationContext.getBean(Bus.DEFAULT_BUS_ID);
         EndpointImpl endpoint = new EndpointImpl(bus, convertisseur /* implementor */);
         endpoint.publish("/convertisseur");
+        //URL soap complete:
+        //http://localhost:8080/springBootWebService/service/convertisseur
         return endpoint;
     }
  
