@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.afcepf.al33.conv.Convertisseur;
 import fr.afcepf.al33.dao.DeviseDao;
+import fr.afcepf.al33.dto.ResConv;
 import fr.afcepf.al33.entity.Devise;
 
 @RestController //@Component de type @RestController
@@ -36,6 +37,15 @@ public class DeviseRestCtrl {
 	public Devise createOrUpdateDevise(@RequestBody @Valid Devise devise) {
 		deviseDao.save(devise);
 		return devise; //quelquefois (pas ici) l'objet retourné comporte id auto_incr
+	}
+	
+	//URL : ..../rest/devises/convertir?montant=50&source=EUR&cible=USD
+	@RequestMapping(value="/convertir" , method=RequestMethod.GET)
+	public ResConv convertir(@RequestParam("montant")Double montant,
+							@RequestParam("source")String source,
+							@RequestParam("cible")String cible) {
+		Double res = convertisseur.convertir(montant, source, cible);
+		return new ResConv(montant, source, cible,res);
 	}
 	
 	//URL= http://localhost:8080/springBootWebService/rest/devises/EUR
