@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,8 +28,12 @@ public class DeviseRestCtrl {
 	
 	//URL= http://localhost:8080/springBootWebService/rest/devises/EUR
 	@RequestMapping(value="/{codeDevise}" , method=RequestMethod.GET)
-	public Devise getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
-		return deviseDao.findById(codeDevise).get();
+	public ResponseEntity<Devise> getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
+		Devise d = deviseDao.findById(codeDevise).orElse(null);
+		if(d!=null)
+			return new ResponseEntity<Devise>(d,HttpStatus.OK);//200=OK
+		else
+			return new ResponseEntity<Devise>(HttpStatus.NOT_FOUND);//404=NOT_FOUND
 	}
 	
 	//URL= http://localhost:8080/springBootWebService/rest/devises
@@ -42,7 +48,7 @@ public class DeviseRestCtrl {
 			return toutesDevises;
 		else
 			return toutesDevises.stream()
-					  .filter((d)-> d.getTauxChange()>tauxChangeMini)
+					  .filter((d)-> d.getTauxChange()>=tauxChangeMini)
 					  .collect(Collectors.toList());
 	}
 
