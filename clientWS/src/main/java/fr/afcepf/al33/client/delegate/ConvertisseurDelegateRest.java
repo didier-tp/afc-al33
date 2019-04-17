@@ -17,7 +17,6 @@ public class ConvertisseurDelegateRest implements ConvertisseurDelegate {
 		this.jaxrs2client = ClientBuilder.newClient()
 				            .register(JacksonFeature.class);
 	}
-	
 	@Override
 	public double convertir(double montant, String source, String cible) {
 		//..../rest/devises/convertir?montant=50&source=EUR&cible=USD

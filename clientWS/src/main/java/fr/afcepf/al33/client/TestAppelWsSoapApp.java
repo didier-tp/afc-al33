@@ -2,13 +2,20 @@ package fr.afcepf.al33.client;
 
 import fr.afcepf.al33.client.delegate.ConvertisseurDelegate;
 import fr.afcepf.al33.client.delegate.ConvertisseurDelegateRest;
+import fr.afcepf.al33.client.delegate.DeviseDelegate;
+import fr.afcepf.al33.client.delegate.DeviseDelegateRest;
+import fr.afcepf.al33.dto.Devise;
 
 public class TestAppelWsSoapApp {
 
 	
     //à lancer via Run as / java application
 	public static void main(String[] args) {
-		 
+		
+		DeviseDelegate deviseDelegate = new DeviseDelegateRest();
+		Devise savedDevise = deviseDelegate.sauvegarderDevise(
+				new Devise("codeQuiVaBien","monnaieSinge",0.00001));
+		System.out.println("savedDevise="+savedDevise);
 		
 		ConvertisseurDelegate convertisseurDelegate 
 		= new ConvertisseurDelegateRest();
