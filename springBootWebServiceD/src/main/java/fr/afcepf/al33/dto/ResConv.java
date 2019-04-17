@@ -1,6 +1,8 @@
 package fr.afcepf.al33.dto;
 //.payload quelquefois utilisé à la place de .dto
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 
 // DTO = Data Transfert Object 
@@ -11,7 +13,10 @@ import lombok.Data;
 
 //@ToString @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Data @AllArgsConstructor
-public class ResConv {
+public class ResConv implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private Double montant;
 	private String source;
 	private String cible;
