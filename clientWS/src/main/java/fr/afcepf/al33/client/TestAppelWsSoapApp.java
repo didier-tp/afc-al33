@@ -1,7 +1,7 @@
 package fr.afcepf.al33.client;
 
 import fr.afcepf.al33.client.delegate.ConvertisseurDelegate;
-import fr.afcepf.al33.client.delegate.ConvertisseurDelegateSoap;
+import fr.afcepf.al33.client.delegate.ConvertisseurDelegateRest;
 
 public class TestAppelWsSoapApp {
 
@@ -10,12 +10,15 @@ public class TestAppelWsSoapApp {
 	public static void main(String[] args) {
 		 
 		
-		ConvertisseurDelegate convertisseurDelegate = new ConvertisseurDelegateSoap();
-		
-			System.out.println("15 euros=" + 
+		ConvertisseurDelegate convertisseurDelegate 
+		= new ConvertisseurDelegateRest();
+		//= new ConvertisseurDelegateSoap();
+		convertisseurDelegate.convertir(50, "EUR", "USD");
+		/*	
+		System.out.println("15 euros=" + 
 					convertisseurDelegate.euroToFranc(15.0));
 			System.out.println("auteur=" + convertisseurDelegate.getAuteur());
-		
+		*/
 	}
 
 }

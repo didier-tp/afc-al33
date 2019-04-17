@@ -11,4 +11,14 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
   </properties>
   
+  <dependencies>
+     <!-- l'api officielle jax-rs est codée
+          dans jersey ou dans cxf ou .... -->
+     <dependency>
+	    <groupId>org.glassfish.jersey.core</groupId>
+	    <artifactId>jersey-client</artifactId>
+	    <version>2.28</version>
+	</dependency>
+  </dependencies>
+  
 </project>
