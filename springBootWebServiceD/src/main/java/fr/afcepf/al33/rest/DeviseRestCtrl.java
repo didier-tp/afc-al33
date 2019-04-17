@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,14 +27,25 @@ public class DeviseRestCtrl {
 	@Autowired //injection le dao (temporairement) 
 	private DeviseDao deviseDao;
 	
+	//URL= http://localhost:8080/springBootWebService/rest/devises
+	//en mode POST avec la partie body invisible de la requete contenant
+	//{ "code" : "cxy" , "monnaie" : "monnaieXy" , "tauxChange": 2.2  }
+	@RequestMapping(value="" , method=RequestMethod.POST)
+	public Devise createOrUpdateDevise(@RequestBody Devise devise) {
+		deviseDao.save(devise);
+		return devise; //quelquefois (pas ici) l'objet retourné comporte id auto_incr
+	}
+	
 	//URL= http://localhost:8080/springBootWebService/rest/devises/EUR
 	@RequestMapping(value="/{codeDevise}" , method=RequestMethod.GET)
-	public ResponseEntity<Devise> getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
+	public ResponseEntity<?> getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		Devise d = deviseDao.findById(codeDevise).orElse(null);
 		if(d!=null)
 			return new ResponseEntity<Devise>(d,HttpStatus.OK);//200=OK
 		else
-			return new ResponseEntity<Devise>(HttpStatus.NOT_FOUND);//404=NOT_FOUND
+			return new ResponseEntity<String>
+		      ("{ \"err\" : \"pas bras, pas de chocolat\"}",
+		    		  HttpStatus.NOT_FOUND) ;//404=NOT_FOUND
 	}
 	
 	//URL= http://localhost:8080/springBootWebService/rest/devises
