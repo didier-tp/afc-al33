@@ -2,6 +2,7 @@ package fr.afcepf.al33.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Devise {
@@ -11,6 +12,7 @@ public class Devise {
 	
 	private String monnaie;
 	
+	@Min(value=0,message="le tauxChange doit etre positif")
 	private Double tauxChange;
 
 	public String getCode() {

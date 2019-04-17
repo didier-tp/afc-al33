@@ -3,6 +3,8 @@ package fr.afcepf.al33.rest;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,7 @@ public class DeviseRestCtrl {
 	//en mode POST avec la partie body invisible de la requete contenant
 	//{ "code" : "cxy" , "monnaie" : "monnaieXy" , "tauxChange": 2.2  }
 	@RequestMapping(value="" , method=RequestMethod.POST)
-	public Devise createOrUpdateDevise(@RequestBody Devise devise) {
+	public Devise createOrUpdateDevise(@RequestBody @Valid Devise devise) {
 		deviseDao.save(devise);
 		return devise; //quelquefois (pas ici) l'objet retourné comporte id auto_incr
 	}
