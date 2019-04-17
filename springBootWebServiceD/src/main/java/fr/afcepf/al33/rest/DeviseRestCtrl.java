@@ -1,6 +1,7 @@
 package fr.afcepf.al33.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,8 +35,15 @@ public class DeviseRestCtrl {
 	@RequestMapping(value="" , method=RequestMethod.GET)
 	public List<Devise> getDevises(@RequestParam(value="tauxChangeMini",
 	                               required=false) Double tauxChangeMini) {
-			return (List<Devise>) deviseDao.findAll();
-			//...
+		
+		List<Devise> toutesDevises = (List<Devise>) deviseDao.findAll();
+		
+		if(tauxChangeMini==null)
+			return toutesDevises;
+		else
+			return toutesDevises.stream()
+					  .filter((d)-> d.getTauxChange()>tauxChangeMini)
+					  .collect(Collectors.toList());
 	}
 
 }
