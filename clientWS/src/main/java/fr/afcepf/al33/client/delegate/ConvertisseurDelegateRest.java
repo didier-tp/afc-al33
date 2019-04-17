@@ -8,20 +8,23 @@ import javax.ws.rs.core.MediaType;
 public class ConvertisseurDelegateRest implements ConvertisseurDelegate {
 
 	private Client jaxrs2client;
-	
+	private String debutUrlDevise="http://localhost:8080/springBootWebService/rest/devises";
 	public ConvertisseurDelegateRest() {
 		this.jaxrs2client = ClientBuilder.newClient();
 	}
 	
 	@Override
 	public double convertir(double montant, String source, String cible) {
-		String convUrl = 
-				"http://localhost:8080/springBootWebService/rest/devises/convertir";
-		WebTarget convTarget = jaxrs2client.target(convUrl);
+		//..../rest/devises/convertir?montant=50&source=EUR&cible=USD
+		WebTarget convTarget = jaxrs2client.target(debutUrlDevise)
+				                           .path("convertir")
+				                           .queryParam("montant", montant)
+										   .queryParam("source", source)
+										   .queryParam("cible", cible);
 		
-		String res= convTarget.request(MediaType.APPLICATION_JSON_TYPE)
+		String jsonStringRes= convTarget.request(MediaType.APPLICATION_JSON_TYPE)
 		                .get().readEntity(String.class);
-		System.out.println("res="+res);
+		System.out.println("jsonStringRes="+jsonStringRes);
 		return 0;
 	}
 
