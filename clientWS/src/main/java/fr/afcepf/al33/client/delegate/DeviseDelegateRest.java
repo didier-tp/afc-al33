@@ -38,7 +38,7 @@ public class DeviseDelegateRest implements DeviseDelegate {
 
 	@Override
 	public List<Devise> toutesDevises() {
-		// TODO Auto-generated method stub
+		// ...
 		return null;
 	}
 
