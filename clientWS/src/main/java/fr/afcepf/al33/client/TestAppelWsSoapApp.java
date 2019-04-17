@@ -13,7 +13,9 @@ public class TestAppelWsSoapApp {
 		ConvertisseurDelegate convertisseurDelegate 
 		= new ConvertisseurDelegateRest();
 		//= new ConvertisseurDelegateSoap();
-		convertisseurDelegate.convertir(50, "EUR", "USD");
+		double montantConverti = 
+				convertisseurDelegate.convertir(50, "EUR", "USD");
+		System.out.println("montantConverti="+montantConverti);
 		/*	
 		System.out.println("15 euros=" + 
 					convertisseurDelegate.euroToFranc(15.0));
