@@ -26,7 +26,10 @@ $(function() {
             	   saveDeviseAsJsonString = JSON.stringify(data);
             	   console.log(saveDeviseAsJsonString);
             	   $('#idDivMessage').html("devise sauvegardée : " + saveDeviseAsJsonString);
-                   }
+                   },
+		        error: function( jqXHR, textStatus, errorThrown ){
+		     	   $("#idDivMessage").html( xhrStatusToErrorMessage(jqXHR) + "status:" + textStatus ) ;
+		        }
 			});
 	});
 	
