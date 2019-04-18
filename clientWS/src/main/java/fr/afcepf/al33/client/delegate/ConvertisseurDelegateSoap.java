@@ -18,7 +18,8 @@ public class ConvertisseurDelegateSoap implements ConvertisseurDelegate {
 		try {
 			String sEndPointUrl = 
 					//"http://192.168.102.144:7979/serveursoap/ConvertisseurImpl";
-					"http://192.168.102.74:7979/serveurSoapD/ConvertisseurImpl";
+					//"http://192.168.102.74:7979/serveurSoapD/ConvertisseurImpl";
+					"http://localhost:8080/springBootWebService/service/convertisseur";
 			String sWsdlUrl = sEndPointUrl + "?wsdl";
 			URL wsdlUrl = new URL(sWsdlUrl);
 			this.proxyWsConvertisseur

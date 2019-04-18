@@ -18,6 +18,7 @@ public class DeviseDelegateRest implements DeviseDelegate {
 
 	private Client jaxrs2client;
 	private String debutUrlDevise="http://localhost:8080/springBootWebService/rest/devises";
+	private String debutUrlDevisePublic="http://localhost:8080/springBootWebService/rest/public/devises";
 	public DeviseDelegateRest() {
 		this.jaxrs2client = ClientBuilder.newClient()
 				            .register(JacksonFeature.class);
@@ -39,7 +40,7 @@ public class DeviseDelegateRest implements DeviseDelegate {
 
 	@Override
 	public List<Devise> toutesDevises() {
-		WebTarget devisesTarget = jaxrs2client.target(debutUrlDevise);
+		WebTarget devisesTarget = jaxrs2client.target(debutUrlDevisePublic);
 		Devise[] tabDevises= 
 				devisesTarget.request(MediaType.APPLICATION_JSON_TYPE)
                 .get().readEntity(Devise[].class);

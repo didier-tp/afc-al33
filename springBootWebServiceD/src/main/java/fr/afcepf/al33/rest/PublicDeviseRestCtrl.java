@@ -37,7 +37,7 @@ public class PublicDeviseRestCtrl {
 	
 	
 	
-	//URL : ..../rest/devises/convertir?montant=50&source=EUR&cible=USD
+	//URL : ..../rest/public/devises/convertir?montant=50&source=EUR&cible=USD
 	@RequestMapping(value="/convertir" , method=RequestMethod.GET)
 	public ResConv convertir(@RequestParam("montant")Double montant,
 							@RequestParam("source")String source,
@@ -48,7 +48,7 @@ public class PublicDeviseRestCtrl {
 	
 	
 	
-	//URL= http://localhost:8080/springBootWebService/rest/devises/EUR
+	//URL= http://localhost:8080/springBootWebService/rest/public/devises/EUR
 	@RequestMapping(value="/{codeDevise}" , method=RequestMethod.GET)
 	public ResponseEntity<?> getDeviseByCode(@PathVariable("codeDevise") String codeDevise) {
 		Devise d = deviseDao.findById(codeDevise).orElse(null);
@@ -60,8 +60,8 @@ public class PublicDeviseRestCtrl {
 		    		  HttpStatus.NOT_FOUND) ;//404=NOT_FOUND
 	}
 	
-	//URL= http://localhost:8080/springBootWebService/rest/devises
-	//URL= http://localhost:8080/springBootWebService/rest/devises?tauxChangeMini=1
+	//URL= http://localhost:8080/springBootWebService/rest/public/devises
+	//URL= http://localhost:8080/springBootWebService/rest/public/devises?tauxChangeMini=1
 	@RequestMapping(value="" , method=RequestMethod.GET)
 	public List<Devise> getDevises(@RequestParam(value="tauxChangeMini",
 	                               required=false) Double tauxChangeMini) {

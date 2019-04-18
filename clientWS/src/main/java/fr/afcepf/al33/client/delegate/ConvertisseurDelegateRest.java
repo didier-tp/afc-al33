@@ -12,15 +12,16 @@ import fr.afcepf.al33.dto.ResConv;
 public class ConvertisseurDelegateRest implements ConvertisseurDelegate {
 
 	private Client jaxrs2client;
-	private String debutUrlDevise="http://localhost:8080/springBootWebService/rest/devises";
+	//private String debutUrlDevise="http://localhost:8080/springBootWebService/rest/devises";
+	private String debutUrlDevisePublic="http://localhost:8080/springBootWebService/rest/public/devises";
 	public ConvertisseurDelegateRest() {
 		this.jaxrs2client = ClientBuilder.newClient()
 				            .register(JacksonFeature.class);
 	}
 	@Override
 	public double convertir(double montant, String source, String cible) {
-		//..../rest/devises/convertir?montant=50&source=EUR&cible=USD
-		WebTarget convTarget = jaxrs2client.target(debutUrlDevise)
+		//..../rest/public/devises/convertir?montant=50&source=EUR&cible=USD
+		WebTarget convTarget = jaxrs2client.target(debutUrlDevisePublic)
 				                           .path("convertir")
 				                           .queryParam("montant", montant)
 										   .queryParam("source", source)
