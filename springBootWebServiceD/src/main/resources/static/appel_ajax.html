@@ -16,7 +16,18 @@ $(function() {
 		devise.monnaie = $('#idMonnaie').val();
 		devise.tauxChange = Number( $('#idTauxChange').val() );
 		var deviseAsJsonString = JSON.stringify(devise);
-		$('#idDivMessage').html("message apres clic : " + deviseAsJsonString);
+        var saveDeviseAsJsonString = null;
+		$.ajax({
+               type : 'POST',
+               url : './rest/devises',
+               data : deviseAsJsonString ,
+               contentType : 'application/json',
+               success: function(data,status,xhr) {
+            	   saveDeviseAsJsonString = JSON.stringify(data);
+            	   console.log(saveDeviseAsJsonString);
+            	   $('#idDivMessage').html("devise sauvegardée : " + saveDeviseAsJsonString);
+                   }
+			});
 	});
 	
 })
