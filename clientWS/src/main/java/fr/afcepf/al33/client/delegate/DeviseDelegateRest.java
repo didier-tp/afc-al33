@@ -1,5 +1,6 @@
 package fr.afcepf.al33.client.delegate;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
@@ -38,8 +39,11 @@ public class DeviseDelegateRest implements DeviseDelegate {
 
 	@Override
 	public List<Devise> toutesDevises() {
-		// ...
-		return null;
+		WebTarget devisesTarget = jaxrs2client.target(debutUrlDevise);
+		Devise[] tabDevises= 
+				devisesTarget.request(MediaType.APPLICATION_JSON_TYPE)
+                .get().readEntity(Devise[].class);
+		return Arrays.asList(tabDevises);
 	}
 
 }

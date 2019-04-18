@@ -6,7 +6,7 @@ import fr.afcepf.al33.client.delegate.DeviseDelegate;
 import fr.afcepf.al33.client.delegate.DeviseDelegateRest;
 import fr.afcepf.al33.dto.Devise;
 
-public class TestAppelWsSoapApp {
+public class TestAppelWsSoapEtRestApp {
 
 	
     //à lancer via Run as / java application
@@ -16,6 +16,7 @@ public class TestAppelWsSoapApp {
 		Devise savedDevise = deviseDelegate.sauvegarderDevise(
 				new Devise("codeQuiVaBien","monnaieSinge",0.00001));
 		System.out.println("savedDevise="+savedDevise);
+		System.out.println("toutesDevises="+deviseDelegate.toutesDevises());
 		
 		ConvertisseurDelegate convertisseurDelegate 
 		= new ConvertisseurDelegateRest();
@@ -23,6 +24,8 @@ public class TestAppelWsSoapApp {
 		double montantConverti = 
 				convertisseurDelegate.convertir(50, "EUR", "USD");
 		System.out.println("montantConverti="+montantConverti);
+		
+		
 		/*	
 		System.out.println("15 euros=" + 
 					convertisseurDelegate.euroToFranc(15.0));
