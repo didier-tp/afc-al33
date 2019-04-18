@@ -7,8 +7,7 @@ $(function() {
 	$('#idDivMessage').html("message au demarrage");
 
 	$('#idBtnSave').on('click',function(){
-		var devise = {
-				  code : null,
+		var devise = { code : null,
 				  monnaie : null,
 				  tauxChange : null
 				};
@@ -17,8 +16,7 @@ $(function() {
 		devise.tauxChange = Number( $('#idTauxChange').val() );
 		var deviseAsJsonString = JSON.stringify(devise);
         var saveDeviseAsJsonString = null;
-		$.ajax({
-               type : 'POST',
+		$.ajax({ type : 'POST',
                url : './rest/devises',
                data : deviseAsJsonString ,
                contentType : 'application/json',

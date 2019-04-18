@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ import fr.afcepf.al33.conv.Convertisseur;
 import fr.afcepf.al33.dao.DeviseDao;
 import fr.afcepf.al33.dto.ResConv;
 import fr.afcepf.al33.entity.Devise;
+
+@CrossOrigin("*")//pour accepter de répondre à des appels ajax 
+                 //provenant d'autres domaines/applications/...
 
 @RestController //@Component de type @RestController
 @RequestMapping(value="/rest/devises" , headers="Accept=application/json")
