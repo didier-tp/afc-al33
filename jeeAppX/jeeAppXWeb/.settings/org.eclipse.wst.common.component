@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="jeeAppXWeb-0.0.1-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="jeeAppXEjb-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeeAppXEjb/jeeAppXEjb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jeeAppXDelegateAppY-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeeAppXDelegateAppY/jeeAppXDelegateAppY">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="appY-dto-itf-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/appY-dto-itf/appY-dto-itf">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="appY-exposed-entities-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/appY-exposed-entities/appY-exposed-entities">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="jeeAppXWeb"/>
+        <property name="java-output-path" value="/jeeAppXWeb/target/classes"/>
+    </wb-module>
+</project-modules>

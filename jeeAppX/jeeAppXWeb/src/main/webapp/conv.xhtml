@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>conversions</title>
+</h:head>
+<h:body>
+   <h:form>
+       montantEuro: <h:inputText  value="#{xxMBean.montantEuro}"/> <br/>
+      <h:commandButton value="euroToFranc" action="#{xxMBean.doEuroToFranc}" />
+   </h:form> <br/>
+    montantFranc: <h:outputText  value="#{xxMBean.montantFranc}"/> <br/>
+    <hr/>
+	<h:form>
+       montantSource: <h:inputText  value="#{xxMBean.montantSource}"/> <br/>
+       code monnaieSource: <h:inputText  value="#{xxMBean.codeMonnaieSource}"/> <br/>
+       code monnaieCible: <h:inputText  value="#{xxMBean.codeMonnaieCible}"/> <br/>
+      <h:commandButton value="convertir" action="#{xxMBean.doConversion}" />
+   </h:form> <br/>
+    montantCible: <h:outputText  value="#{xxMBean.montantCible}"/> <br/>
+</h:body>
+
+</html>

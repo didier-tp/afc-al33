@@ -2,11 +2,11 @@ package fr.afcepf.al33.tp.dao;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.afcepf.al33.tp.entity.Film;
 
-public interface DaoFilm extends CrudRepository<Film,Long>{
+public interface DaoFilm extends JpaRepository/*CrudRepository*/<Film,Long>{
     //méthodes héritées: findById, save, deleteById, ...
 	
 	//méthodes supplémentaires via conventions de noms:

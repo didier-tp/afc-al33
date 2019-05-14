@@ -2,11 +2,11 @@ package fr.afcepf.al33.tp.dao;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.afcepf.al33.tp.entity.Acteur;
 
-public interface DaoActeur extends CrudRepository<Acteur,Long>{
+public interface DaoActeur extends JpaRepository/*CrudRepository*/<Acteur,Long>{
 	 //méthodes héritées: findById, save, deleteById, ...
 	
 	//méthodes supplémentaires via conventions de noms:

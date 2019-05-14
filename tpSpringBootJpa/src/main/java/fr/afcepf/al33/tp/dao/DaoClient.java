@@ -2,12 +2,12 @@ package fr.afcepf.al33.tp.dao;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.afcepf.al33.tp.entity.Client;
 import fr.afcepf.al33.tp.entity.Compte;
 
-public interface DaoClient  extends CrudRepository<Client, Long> {
+public interface DaoClient  extends JpaRepository/*CrudRepository*/<Client, Long> {
 	/*
 	//méthodes héritées de CrudRepository:
 	Optional<Client> findById(Long num);
