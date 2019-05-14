@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.afcepf.al33.appX.service.ServiceXx;
-import fr.afcepf.al33.appY.delegate.MyConvRestDelegate;
+import fr.afcepf.al33.appY.delegate.MyConvSoapDelegate;
 import fr.afcepf.al33.conv.Convertisseur;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,8 @@ public class XxMBean {
 	@EJB
 	private ServiceXx serviceXx;
 	
-	private Convertisseur convertisseur = MyConvRestDelegate.getInstance();
+	//private Convertisseur convertisseur = MyConvRestDelegate.getInstance();
+	private Convertisseur convertisseur = MyConvSoapDelegate.getInstance();
 	
 	public String doEuroToFranc() {
 		this.montantFranc = serviceXx.euroToFranc(this.montantEuro);
