@@ -1,5 +1,7 @@
 package fr.afcepf.al33.appY.delegate;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -8,6 +10,8 @@ import javax.ws.rs.core.MediaType;
 import fr.afcepf.al33.conv.Convertisseur;
 import fr.afcepf.al33.dto.ResConv;
 
+@Named //CDI
+@ApplicationScoped//CDI/JEE
 public class MyConvRestDelegate implements Convertisseur{
 	
 	private static MyConvRestDelegate uniqueInstance=null;
@@ -53,11 +57,11 @@ public class MyConvRestDelegate implements Convertisseur{
 						                           .queryParam("montant", montant)
 												   .queryParam("source", source)
 												   .queryParam("cible", cible);
-				/*
+				
 				String jsonStringRes= convTarget.request(MediaType.APPLICATION_JSON_TYPE)
 				                .get().readEntity(String.class);
 				System.out.println("jsonStringRes="+jsonStringRes);
-				
+				/*
 				ResConv resConv = null;
 				try {
 					resConv = mapper.readValue(jsonStringRes, ResConv.class);
