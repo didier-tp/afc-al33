@@ -3,6 +3,7 @@ package fr.afcepf.al33.appX.web;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 
 import fr.afcepf.al33.appX.service.ServiceXx;
@@ -43,6 +44,13 @@ public class XxMBean {
 		this.montantCible = convertisseur.convertir(this.montantSource,
 				         codeMonnaieSource, codeMonnaieCible);
 		return null;
+	}
+	
+	public void onSomethingChange(ValueChangeEvent event)
+	{
+	if(this.montantFranc!=null)
+		this.montantFranc=this.montantFranc+1;
+	System.out.println("onSomethingChange");
 	}
 	
 }
