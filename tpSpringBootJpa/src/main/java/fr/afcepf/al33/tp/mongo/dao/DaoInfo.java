@@ -1,10 +1,10 @@
 package fr.afcepf.al33.tp.mongo.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import fr.afcepf.al33.mongo.collections.Info;
 
-public interface DaoInfo  extends CrudRepository<Info, Long> {
+public interface DaoInfo  extends MongoRepository/* pas CrudRepository*/<Info, Long> {
 	/*
 	//méthodes héritées de CrudRepository:
 	Optional<Info> findById(Long num);

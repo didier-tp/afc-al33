@@ -50,6 +50,14 @@
 		    <version>2.2.0</version>
 		    <!-- maybe scope test -->
 		</dependency>
+		
+		<!-- embedmongo-spring factory -->
+		<dependency>
+		    <groupId>cz.jirutka.spring</groupId>
+		    <artifactId>embedmongo-spring</artifactId>
+		    <version>RELEASE</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

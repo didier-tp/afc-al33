@@ -103,7 +103,6 @@
 			    <groupId>org.springframework.boot</groupId>
 			    <artifactId>spring-boot-maven-plugin</artifactId>
 			      <configuration>
-			        <mainClass>fr.afcepf.al33.MySpringBootApplication</mainClass>
 			       <layout>ZIP</layout>
 			    </configuration>
 			</plugin>
